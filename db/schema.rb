@@ -11,32 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222063946) do
+ActiveRecord::Schema.define(version: 20170222191056) do
 
   create_table "parts", force: :cascade do |t|
     t.integer  "team_id"
-    t.integer  "picture_id"
     t.integer  "cell_number"
     t.integer  "color"
+    t.text     "path"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "svg_id"
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "svg"
+    t.text     "svg"
     t.integer  "parts_count"
-    t.string   "color"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "svg_id"
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.string   "team_name"
-    t.integer  "good"
-    t.text     "svg"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "pictures", ["svg_id"], name: "index_pictures_on_svg_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

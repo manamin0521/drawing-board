@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  root 'teams#index'
+  root 'pictures#index'
   resources 'users'
   resources 'pictures'
   resources 'parts'
+  get '/parts/new/:id', to: 'parts#new'
+  get '/pictures/show/:id', to: 'pictures#show'
+  get '/parts/:id/edit/id', to: 'parts#edit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,6 +5,7 @@ class CreateParts < ActiveRecord::Migration
       t.integer :picture_id
       t.integer :cell_number
       t.integer :color
+      t.text :path
        
       t.timestamps null: false
     end
