@@ -1,3 +1,14 @@
 // Place all the styles related to the teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$base-color: #192bc1;
+
+canvas {
+    margin: 48px auto;
+    display: block;
+    max-width: 440px;
+}
+
+footer {
+  background-color: $base-color;
+}

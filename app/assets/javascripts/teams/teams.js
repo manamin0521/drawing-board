@@ -1,15 +1,3 @@
-// var d = document;
-// var outline = d.getElementById("canvas-all-outline").value;
-// var wpBlue2 = d.getElementById("canvas-WordPress-blue2").value;
-// var wpBlue1 = d.getElementById("canvas-WordPress-blue1").value;
-// var wpLogo = d.getElementById("canvas-WordPress-logo").value;
-// var sole = d.getElementById("canvas-sole").value;
-// var ear = d.getElementById("canvas-ear").value;
-// var tail = d.getElementById("canvas-tail").value;
-// var wapuuBody = d.getElementById("canvas-body").value;
-// var nose = d.getElementById("canvas-nose").value;
-// var eye = d.getElementById("canvas-eye").value;
-
 // レスポンシブ対応 表示領域の幅(ここでは #content)を取得してその幅で場合分け
 var blogContentAreaWidth = document.getElementById("content").clientWidth;
 if (blogContentAreaWidth > 400) {
@@ -198,7 +186,7 @@ function wapuuNurie () {
 	c0-3.927,3.183-7.109,7.113-7.109S207.353,43.945,207.353,47.872" id="eye-right" fill="' + eye + '"></path>
     </g>
 </svg>';
- 
+
     //canvas に svg を書き出す
     var img = new Image();
     img.onload = function() {
