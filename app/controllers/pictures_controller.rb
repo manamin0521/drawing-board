@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show]
+#   before_action :set_picture, only: [:show]
     
     def index
         @pictures = Picture.all
@@ -12,7 +12,6 @@ class PicturesController < ApplicationController
         # @color = @picture.parts.color
     end
     
-    
     def new
         @picture = Picture.new
     end
@@ -20,7 +19,7 @@ class PicturesController < ApplicationController
     def create
         @picture = Picture.new
         @picture.save
-        redirect_to root_url
+        redirect_to new_part_path
     end
     
     private

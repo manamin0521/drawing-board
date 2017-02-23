@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  root 'pictures#top'
+  root 'pictures#new'
   resources 'users'
-  resources 'pictures'
+  resources :pictures do
+    resource :parts
+  end
   resources 'parts'
-  get '/parts/new/:id', to: 'parts#new'
+  get '/pictures/:picture_id/parts/new/:id', to: 'parts#new', as: 'new_picture_parts_id'
   get '/pictures/show/:id', to: 'pictures#show'
-  get '/parts/:id/edit/:id', to: 'parts#edit'
+  get 'picture/new' => 'parts#new', as: 'new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

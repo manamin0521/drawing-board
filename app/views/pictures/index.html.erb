@@ -1,6 +1,6 @@
 <%= content_for(:header)  do %>
     <title>シェアパレ</title>
-    <style>
+    <style type="text/css">
         *{
             margin: 0;
             padding: 0;
@@ -173,13 +173,46 @@
    <section id="works">
        <div class="container">
            <%= image_tag 'icon_works.png', :class => 'icon', :width =>'70px' %>
-           <% @pictures.each do |picture| %>
            <ul>
-               <li>
-               <%= @picture.svg %>
-               </ul>
-            </li>
-            <% end %>
+                <li>
+                    <%= image_tag 'sample0.png', :width =>'140' %>
+                </li>
+                <li>
+                    <<%= image_tag 'sample1.png', :width =>'140' %>
+            
+                </li>
+                <li>
+                    <%= image_tag 'sample2.png', :width =>'140' %>
+                
+                </li>
+                <li>
+                    <%= image_tag 'sample3.png', :width =>'140' %>
+                </li>
+                <li>
+                    <%= image_tag 'sample4.png', :width =>'140' %>
+                </li>
+                <li>
+                    <%= image_tag 'sample5.png', :width =>'140' %>
+                </li>
+                <li>
+                    <%= image_tag 'sample6.png', :width =>'140' %>
+                </li>
+                <li>
+                   <%= image_tag 'sample7.png', :width =>'140' %>
+                </li>
+                <li>
+                    <%= image_tag 'sample8.png', :width =>'140' %>
+                </li>
+                <li>
+                   <%= image_tag 'sample9.png', :width =>'140' %>
+                </li>
+                <li>
+                    <%= image_tag 'sample10.png', :width =>'140' %>
+                </li>
+                <li>
+                    <%= image_tag 'sample11.png', :width =>'140' %>
+                </li>
+            </ul>
         </div>
     </section>
 </main>

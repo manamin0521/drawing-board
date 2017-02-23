@@ -1,6 +1,12 @@
 <%= content_for(:header)  do %>
     <title><%= @part.cell_number %>人目 | シェアパレ</title>
-    <style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+        function coloring(){
+            $('.palette').css("fill", $('#pickColor').val())
+        }
+	</script>
+    <style type="text/css">
         *{
             margin: 0;
             padding: 0;
@@ -34,43 +40,130 @@
             background: #fff;
             margin-right: 52px;
         }
+        
+        input,button{
+             display:block;
+             float:left;
+        }
+        
+        button{
+            padding:4px 12px;
+        }
     </style>
 <% end %>
 <main>
-    <%= params %>
     <svg id="tobisuke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="320px" height="320px">
     <title>tobisuke</title>
-    <g id="tobisuke" stroke="#000" stroke-width="1" fill="none" fill-rule="evenodd">
-    <!--    左目     -->
-    <% if params[:id] == "2" %>
-        <ellipse fill="#fff" cx="92.81" cy="86.42" rx="19.78" ry="13.19" transform="translate(-16.7 150.37) rotate(-73.24)"/>
-    <!--    右目     -->
-        <ellipse fill="#fff" cx="225.48" cy="147.02" rx="19.78" ry="13.19" transform="translate(19.69 320.53) rotate(-73.24)"/>
-    <!--    左眉     -->
+    <g id="tobisuke" stroke="#000" stroke-width="1" fill="none" fill-rule="evenodd"> 
+    <% if params[:id] == "1" %>
+        <!--    本体  これが1つめ  -->
+            <path id="body" class="palette" fill="#fff" d="M478.64,135c-29.89,0-127.9,63.29-127.9,63.29s12.14-68.78-24-121.53c20.89,3.22,42.7,3.87,44.12-3.4,2.64-13.52-9.56-19.78-9.56-19.78s20.77-8.24,19.12-20.77-17.8-19.12-46-10.22c-14.82,4.68-28.58,14.55-37.35,23.87-21.91-15.7-52.22-26.75-94-28.82-19.78,0-219.32,0-155,228.6C-10.61,373.27,46.15,472.07,179.77,494s261.07-9.67,306.78-136.25C518.57,229.46,508.53,135,478.64,135Z"/>
+    <% elsif params[:id] == "2" %>    
+        <!--    左目   右目とセットで2つめ  -->
+            <ellipse id="eye_left" class="palette" fill="#fff" cx="92.81" cy="86.42" rx="19.78" ry="13.19" transform="translate(-16.7 150.37) rotate(-73.24)"/>
+        <!--    右目   左目とセットで2つめ   -->
+            <ellipse id="eye_right" class="palette" fill="#fff" cx="225.48" cy="147.02" rx="19.78" ry="13.19" transform="translate(19.69 320.53) rotate(-73.24)"/>
     <% elsif params[:id] == "3" %>
-        <rect fill="#fff" x="107.42" y="41.26" width="7.6" height="45.06" rx="2.88" ry="2.88" transform="translate(-14.95 86.59) rotate(-40.08)"/>
-    <!--    右眉     -->
-        <rect fill="#fff" x="198" y="103.53" width="64.01" height="10.13" rx="2.88" ry="2.88" transform="translate(-15.37 41.62) rotate(-10.01)"/>
-    <!--    上くちばし     -->
+        <!--    左眉   右眉とセットで3つめ   -->
+            <rect id="eyebrow_left" class="palette" fill="#fff" x="107.42" y="41.26" width="7.6" height="45.06" rx="2.88" ry="2.88" transform="translate(-14.95 86.59) rotate(-40.08)"/>
+        <!--    右眉   左眉とセットで3つめ   -->
+            <rect id="eyebrow_right" class="palette" fill="#fff" x="198" y="103.53" width="64.01" height="10.13" rx="2.88" ry="2.88" transform="translate(-15.37 41.62) rotate(-10.01)"/>
     <% elsif params[:id] == "4" %>
-        <path fill="#fff" d="M19.77,155.85c12.12,28.39,151.2,58.66,167.91,44.6s-48.35-82.3-69.44-82.3S16.73,144.44,19.77,155.85Z"/>
-    <!--    リボン     -->
+        <!--    上くちばし  4つめ    -->
+            <path id="upper_lips" class="palette" fill="#fff" d="M19.77,155.85c12.12,28.39,151.2,58.66,167.91,44.6s-48.35-82.3-69.44-82.3S16.73,144.44,19.77,155.85Z"/>
+       <!--    リボン   5つめ  -->
     <% else %>
-        <path fill="#fff" d="M120,245c-8.32,2.9-25.4,9.25-25.68,9.32a18.41,18.41,0,0,0-25.5-7.94c-5.56-6.41-10.93-13-16.22-19.6-3.38-4.24-19.89-15.6-25.77,1.53-3.55,12.27-6.85,24.61-10.26,36.92-5.39,20.08,15.06,17.41,21.46,15.06,7.93-2.91,15.86-5.84,23.85-8.59A18.37,18.37,0,0,0,87.73,278q8.61,10.09,16.82,20.52c11.17,11.17,24.62,4,26.82-3.94,1.5-5.42,7.66-28.1,9.35-34C141.76,256.94,140.21,237.26,120,245Z"/>
-    <% end %>
-    </g>
+            <path id="ribbon" class="palette" fill="#fff" d="M120,245c-8.32,2.9-25.4,9.25-25.68,9.32a18.41,18.41,0,0,0-25.5-7.94c-5.56-6.41-10.93-13-16.22-19.6-3.38-4.24-19.89-15.6-25.77,1.53-3.55,12.27-6.85,24.61-10.26,36.92-5.39,20.08,15.06,17.41,21.46,15.06,7.93-2.91,15.86-5.84,23.85-8.59A18.37,18.37,0,0,0,87.73,278q8.61,10.09,16.82,20.52c11.17,11.17,24.62,4,26.82-3.94,1.5-5.42,7.66-28.1,9.35-34C141.76,256.94,140.21,237.26,120,245Z"/>
+  
+    <% end %>     
+         </g>
     </svg>
-    <%= form_for @part, html: {id: 'commandBox'} do |f| %>
-    <input id="pickColor" name="color" list="litColor" type="color" value="#000000">
+    <% if params[:id] == "1" %>
+        <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
+        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
         <datalist id="litColor">
-            <option value="#999999"></option>
-            <option value="#DDD2AA"></option>
-            <option value="#FFE3D5"></option>
-            <option value="#999999"></option>
-            <option value="#DDD2AA"></option>
-            <option value="#FFE3D5"></option>
-        </datalist>
-    <p><%= f.submit '次の人へ', {id: "nextBt"} %></p>
-<% end %>
+                <option value="#ffffff"></option>
+                <option value="#333333"></option>
+                <option value="#e63c35"></option>
+                <option value="#fac700"></option>
+                <option value="#67b62d"></option>
+                <option value="#009bdb"></option>
+                <option value="#ff8b22"></option>
+                <option value="#bb39ff"></option>
+                <option value="#ff69b4"></option>
+                <option value="#00ffff"></option>
+            </datalist>
+        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 2, picture_id: 1) %></button>
+        <% end %>
+    <% elsif params[:id] == "2" %>
+    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
+        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
+        <datalist id="litColor">
+                <option value="#ffffff"></option>
+                <option value="#333333"></option>
+                <option value="#e63c35"></option>
+                <option value="#fac700"></option>
+                <option value="#67b62d"></option>
+                <option value="#009bdb"></option>
+                <option value="#ff8b22"></option>
+                <option value="#bb39ff"></option>
+                <option value="#ff69b4"></option>
+                <option value="#00ffff"></option>
+            </datalist>
+        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 3, picture_id: 1) %></button></p>
+        <% end %>
+    <% elsif params[:id] == "3" %>
+    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
+        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
+        <datalist id="litColor">
+                <option value="#ffffff"></option>
+                <option value="#333333"></option>
+                <option value="#e63c35"></option>
+                <option value="#fac700"></option>
+                <option value="#67b62d"></option>
+                <option value="#009bdb"></option>
+                <option value="#ff8b22"></option>
+                <option value="#bb39ff"></option>
+                <option value="#ff69b4"></option>
+                <option value="#00ffff"></option>
+            </datalist>
+        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 4, picture_id: 1) %></button></p>
+        <% end %>
+    <% elsif params[:id] == "4" %>
+    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
+        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
+        <datalist id="litColor">
+                <option value="#ffffff"></option>
+                <option value="#333333"></option>
+                <option value="#e63c35"></option>
+                <option value="#fac700"></option>
+                <option value="#67b62d"></option>
+                <option value="#009bdb"></option>
+                <option value="#ff8b22"></option>
+                <option value="#bb39ff"></option>
+                <option value="#ff69b4"></option>
+                <option value="#00ffff"></option>
+            </datalist>
+        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 5, picture_id: 1) %></button></p>
+        <% end %>
+    <% else %>
+    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
+    <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
+        <datalist id="litColor">
+                <option value="#ffffff"></option>
+                <option value="#333333"></option>
+                <option value="#e63c35"></option>
+                <option value="#fac700"></option>
+                <option value="#67b62d"></option>
+                <option value="#009bdb"></option>
+                <option value="#ff8b22"></option>
+                <option value="#bb39ff"></option>
+                <option value="#ff69b4"></option>
+                <option value="#00ffff"></option>
+            </datalist>
+    <p><button id="nextBt"><%= link_to "次の人へ", picture_path %></p>
+    <% end %>
+    <% end %>
+    
 </main>
 
