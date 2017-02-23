@@ -78,92 +78,25 @@
     <% end %>     
          </g>
     </svg>
-    <% if params[:id] == "1" %>
         <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
-        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
-        <datalist id="litColor">
-                <option value="#ffffff"></option>
-                <option value="#333333"></option>
-                <option value="#e63c35"></option>
-                <option value="#fac700"></option>
-                <option value="#67b62d"></option>
-                <option value="#009bdb"></option>
-                <option value="#ff8b22"></option>
-                <option value="#bb39ff"></option>
-                <option value="#ff69b4"></option>
-                <option value="#00ffff"></option>
-            </datalist>
-        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 2, picture_id: 1) %></button>
+            <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
+                <datalist id="litColor">
+                    <option value="#ffffff"></option>
+                    <option value="#333333"></option>
+                    <option value="#e63c35"></option>
+                    <option value="#fac700"></option>
+                    <option value="#67b62d"></option>
+                    <option value="#009bdb"></option>
+                    <option value="#ff8b22"></option>
+                    <option value="#bb39ff"></option>
+                    <option value="#ff69b4"></option>
+                    <option value="#00ffff"></option>
+                </datalist>
+            <% if params[:id] =< 4 %>
+                <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: id, picture_id: picture.id) %></button>
+            <% else %>
+                <p><button id="nextBt"><%= link_to "結果", picture_path(id: id, picture_id: picture.id) %></button></p>
+            <% end %>
         <% end %>
-    <% elsif params[:id] == "2" %>
-    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
-        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
-        <datalist id="litColor">
-                <option value="#ffffff"></option>
-                <option value="#333333"></option>
-                <option value="#e63c35"></option>
-                <option value="#fac700"></option>
-                <option value="#67b62d"></option>
-                <option value="#009bdb"></option>
-                <option value="#ff8b22"></option>
-                <option value="#bb39ff"></option>
-                <option value="#ff69b4"></option>
-                <option value="#00ffff"></option>
-            </datalist>
-        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 3, picture_id: 1) %></button></p>
-        <% end %>
-    <% elsif params[:id] == "3" %>
-    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
-        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
-        <datalist id="litColor">
-                <option value="#ffffff"></option>
-                <option value="#333333"></option>
-                <option value="#e63c35"></option>
-                <option value="#fac700"></option>
-                <option value="#67b62d"></option>
-                <option value="#009bdb"></option>
-                <option value="#ff8b22"></option>
-                <option value="#bb39ff"></option>
-                <option value="#ff69b4"></option>
-                <option value="#00ffff"></option>
-            </datalist>
-        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 4, picture_id: 1) %></button></p>
-        <% end %>
-    <% elsif params[:id] == "4" %>
-    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
-        <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
-        <datalist id="litColor">
-                <option value="#ffffff"></option>
-                <option value="#333333"></option>
-                <option value="#e63c35"></option>
-                <option value="#fac700"></option>
-                <option value="#67b62d"></option>
-                <option value="#009bdb"></option>
-                <option value="#ff8b22"></option>
-                <option value="#bb39ff"></option>
-                <option value="#ff69b4"></option>
-                <option value="#00ffff"></option>
-            </datalist>
-        <p><button id="nextBt"><%= link_to "次の人へ", new_picture_parts_id_path(id: 5, picture_id: 1) %></button></p>
-        <% end %>
-    <% else %>
-    <%= form_for @part,:url => {:action => 'new'},:method => "get", html: {id: 'commandBox'} do |f| %>
-    <input id="pickColor" name="color" list="litColor" type="color" value="#ffffff" onChange="coloring()">
-        <datalist id="litColor">
-                <option value="#ffffff"></option>
-                <option value="#333333"></option>
-                <option value="#e63c35"></option>
-                <option value="#fac700"></option>
-                <option value="#67b62d"></option>
-                <option value="#009bdb"></option>
-                <option value="#ff8b22"></option>
-                <option value="#bb39ff"></option>
-                <option value="#ff69b4"></option>
-                <option value="#00ffff"></option>
-            </datalist>
-    <p><button id="nextBt"><%= link_to "次の人へ", picture_path %></p>
-    <% end %>
-    <% end %>
-    
 </main>
 
