@@ -6,10 +6,10 @@ class PicturesController < ApplicationController
     end
     
     def show
-        @picture = Picture.find(params[:id])
-        @parts = @picture.parts
+        # @picture = Picture.find(params[:id])
+        # @parts = @picture.parts
         #保存された色をfillの中に入れてあげる
-        @color = @picture.parts.color
+        # @color = @picture.parts.color
     end
     
     

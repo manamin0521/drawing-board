@@ -1,12 +1,48 @@
-<h1>New</h1>
+<%= content_for(:header)  do %>
+    <title><%= @part.cell_number %>人目 | シェアパレ</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body{
+            background: #ffd464;
+        }
+        
+        main{
+            width: 960px;
+            margin: 0 auto;
+        }
+        svg{
+            background: #fff;
+            display: block;
+            border: 8px solid #f26964;
+            border-radius: 12px;
+            padding: 100px;
+            margin: 0 auto;
+            margin-top: 48px;
+        }
+
+        #commandBox{
+            width: 204px;
+            margin: auto;
+            margin-top: 24px;
+        }
+        
+        #pickColor{
+            background: #fff;
+            margin-right: 52px;
+        }
+    </style>
+<% end %>
+<main>
+    <%= params %>
     <svg id="tobisuke" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="320px" height="320px">
     <title>tobisuke</title>
     <g id="tobisuke" stroke="#000" stroke-width="1" fill="none" fill-rule="evenodd">
-    <!--    本体     -->
-    <% if params[:id] == "1" %>
-        <path fill="#fff" stroke="#231815" zstroke-miterlimit="10" stroke-width="5px" d="M478.64,135c-29.89,0-127.9,63.29-127.9,63.29s12.14-68.78-24-121.53c20.89,3.22,42.7,3.87,44.12-3.4,2.64-13.52-9.56-19.78-9.56-19.78s20.77-8.24,19.12-20.77-17.8-19.12-46-10.22c-14.82,4.68-28.58,14.55-37.35,23.87-21.91-15.7-52.22-26.75-94-28.82-19.78,0-219.32,0-155,228.6C-10.61,373.27,46.15,472.07,179.77,494s261.07-9.67,306.78-136.25C518.57,229.46,508.53,135,478.64,135Z"/>
     <!--    左目     -->
-    <% elsif params[:id] == "2" %>
+    <% if params[:id] == "2" %>
         <ellipse fill="#fff" cx="92.81" cy="86.42" rx="19.78" ry="13.19" transform="translate(-16.7 150.37) rotate(-73.24)"/>
     <!--    右目     -->
         <ellipse fill="#fff" cx="225.48" cy="147.02" rx="19.78" ry="13.19" transform="translate(19.69 320.53) rotate(-73.24)"/>
@@ -21,13 +57,20 @@
     <!--    リボン     -->
     <% else %>
         <path fill="#fff" d="M120,245c-8.32,2.9-25.4,9.25-25.68,9.32a18.41,18.41,0,0,0-25.5-7.94c-5.56-6.41-10.93-13-16.22-19.6-3.38-4.24-19.89-15.6-25.77,1.53-3.55,12.27-6.85,24.61-10.26,36.92-5.39,20.08,15.06,17.41,21.46,15.06,7.93-2.91,15.86-5.84,23.85-8.59A18.37,18.37,0,0,0,87.73,278q8.61,10.09,16.82,20.52c11.17,11.17,24.62,4,26.82-3.94,1.5-5.42,7.66-28.1,9.35-34C141.76,256.94,140.21,237.26,120,245Z"/>
-    <!-- 以下は後で隠して最後の画像にのみ使用 -->
-    <!--    下くちばし     -->
-        <path fill="#3e3a39" d="M20.66,165.92c25.49,30.35,125.86,53.1,161.78,42.66,32-15.93-38.94-81.09-56.45-88.28C117.86,120.3,17.47,131,20.66,165.92Z"/>
-
-    <!--    羽影     -->
-        <path fill="#3e3a39" opacity="0.7" d="M410.07,299.91s11.87-19.25,4.4-41.44-70.65-30.88-128.67,4.07S230,362.45,230,362.45l7.19,6s5.72-59.78,49.59-79.88S377.44,271.1,387,297.8s-56.26,64-54.39,69.22,48.9-15.31,54.39-4.58-12.21,55-81.53,63c67,17,107.9-35.71,122.19-67.69S410.07,299.91,410.07,299.91Z"/>
     <% end %>
     </g>
     </svg>
-<p><%= render 'form', parts: @part %></p>
+    <%= form_for @part, html: {id: 'commandBox'} do |f| %>
+    <input id="pickColor" name="color" list="litColor" type="color" value="#000000">
+        <datalist id="litColor">
+            <option value="#999999"></option>
+            <option value="#DDD2AA"></option>
+            <option value="#FFE3D5"></option>
+            <option value="#999999"></option>
+            <option value="#DDD2AA"></option>
+            <option value="#FFE3D5"></option>
+        </datalist>
+    <p><%= f.submit '次の人へ', {id: "nextBt"} %></p>
+<% end %>
+</main>
+
